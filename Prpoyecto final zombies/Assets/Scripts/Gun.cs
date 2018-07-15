@@ -5,15 +5,23 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     Global global;
-    float projectileSpeed = 5f;
+    public Rigidbody projectile;
+    float projectileSpeed = 25f;
 
-	// Update is called once per frame
-	void Update ()
+    void Start()
     {
-        if (Input.GetButtonDown("Fire1") && Time.timeScale == 1.0f)
+        global = FindObjectOfType<Global>().GetComponent<Global>();
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+        if (Input.GetButtonDown("Fire1") && global.ammo > 0 &&Time.timeScale == 1.0f)
         {
+            global.ammo--;
+            global.ammoText.text = global.ammo.ToString();
             Rigidbody clone;
-            clone = Instantiate(global.projectile, transform.position, transform.rotation) as Rigidbody;
+            clone = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
             Physics.IgnoreCollision(clone.GetComponent<Collider>(), GetComponent<Collider>());
             clone.velocity = transform.TransformDirection(Vector3.forward * projectileSpeed);
         }

@@ -57,7 +57,7 @@ namespace NPC
                     OPZombie zombie = (OPZombie)citizen;
                     print("From OPzombie " + zombie.info.age);
                     
-                    global.villagerCount -= 1; //Substract a villager
+                    global.villagerCount --; //Substract a villager
                     global.villagerText.text = "Villagers = " + global.villagerCount.ToString(); //Actualize the text
                     global.oPZombieCount += 1; // Add a zombie
                     global.oPZombieText.text = "OPZombies = " + global.oPZombieCount.ToString();

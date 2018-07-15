@@ -14,15 +14,19 @@ public class Global : MonoBehaviour
     public GameObject[] pjs = new GameObject[4];
     public Image[] hearths = new Image[3];
     public Sprite fullHearth, emptyHearth;
+    public GameObject gameOverText; //Game over text
+    public GameObject youWinText; //You win text.
     public GameObject conversationPanel, conversationPanelZombie, conversationPanelOPZombie; //Villager conversation panel
     public Text conversationText, conversationTextZombie, conversationTextOPZombie; //NPC text (Conversation)
-    public GameObject gameOverText; //Game over text
     public Text villagerText, zombieText, oPZombieText;  //Text that shows the cuantity of npcs
-    public Slider healthBar; 
-    public Rigidbody projectile;
+    public Text ammoText; //Shows the cuantity of ammo.
+    public Slider healthBar;
+    public GameObject exitButton;
     public int villagerCount = 0; // Pile up the cuantity of villagers
     public int zombieCount = 0; // Pile up the cuantity of zombies
     public int oPZombieCount = 0;
+    public int ammo = 15;
+    public int totalAmmo = 15;
     int type = -1;
     const int SPAWN = 25; // constant that define the maximum cuantity of cubes spawned
 
@@ -36,6 +40,9 @@ public class Global : MonoBehaviour
         conversationPanelZombie.SetActive(false);
         conversationPanelOPZombie.SetActive(false);
         gameOverText.SetActive(false);
+        youWinText.SetActive(false);
+        exitButton.SetActive(false);
+        
 
         for (int i = 0; i < hearths.Length; i++)
         {

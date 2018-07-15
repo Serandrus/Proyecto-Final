@@ -104,11 +104,13 @@ public class Hero : MonoBehaviour
     {
         if (other.gameObject.GetComponent<SupportItem>())
         {
-            if (global.healthBar.value < 100f)
+            if (global.healthBar.value < 100f || global.ammo < global.totalAmmo)
             {
-                global.healthBar.value += 30f; 
+                global.healthBar.value += 30f;
+                global.ammo = global.totalAmmo;
+                global.ammoText.text = "15/" + global.ammo.ToString();
             }
-        }    
+        }
     }
 
     void Update()
